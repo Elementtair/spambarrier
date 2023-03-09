@@ -3,8 +3,8 @@
 // *********************************
 // Based on code originally written by Smurf_Minions (http://guildwarsholland.nl/)
 // Modified by sklerder (sklerder -at- orange.fr)
-// Last Modified: 2012/11/26
-// Version 1.0.6
+// Last Modified: 2022/11/26
+// Version 1.0.7
 // *********************************
 */
 define('NOT_SPAM', 0);
@@ -26,6 +26,7 @@ function log_register_details($email, $membersIP, $req_username, $spam, $botchec
 	global $timezone;
 	global $email_setting;
 	global $errors;
+	
 	
 		
 
@@ -113,6 +114,7 @@ function sb_stopforumspam_check($emailAddress, $ipAddress, $user_Name)
 		$url = 'http://www.stopforumspam.com/api?ip='. $ipAddress .'&email='. $emailAddress .'&username=' . $user_Name .'&f=json';
 		$data1 = @file_get_contents($url);
 		$data = json_decode($data1); 
+		$error = 'aucun soucis';
   
 		// First, check if SFS server is up
 		if((isset($data->error)) or ($data == Null))
